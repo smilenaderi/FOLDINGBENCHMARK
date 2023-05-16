@@ -1,5 +1,6 @@
 import subprocess
-
+import os
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:256"
 from transformers import AutoTokenizer, EsmForProteinFolding
 
 from transformers.models.esm.openfold_utils.protein import to_pdb, Protein as OFProtein
