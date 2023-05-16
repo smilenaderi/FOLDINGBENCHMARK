@@ -1,5 +1,7 @@
 import subprocess
 import os
+import time
+
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:256"
 from transformers import AutoTokenizer, EsmForProteinFolding
 
@@ -27,7 +29,7 @@ def convert_outputs_to_pdb(outputs):
         )
         pdbs.append(to_pdb(pred))
     return pdbs
-
+sttt = time.time()
 tokenizer = AutoTokenizer.from_pretrained("facebook/esmfold_v1")
 model = EsmForProteinFolding.from_pretrained("facebook/esmfold_v1", low_cpu_mem_usage=True)
 
@@ -43,8 +45,8 @@ torch.backends.cuda.matmul.allow_tf32 = True
 
 model.trunk.set_chunk_size(64)
 
-
-
+print('LOADING TIME')
+print(time.time()-sttt)
 
 import torch
 def run_example(sequnce):
@@ -85,3 +87,4 @@ def run_example(sequnce):
         # print(pdb)
 
 example = "MDLSDIELFQAITSDDTIIINKFINERENLNFRNDFGRTPLMSAIEKKKI"
+run_example(example)
