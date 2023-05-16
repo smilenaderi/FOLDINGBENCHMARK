@@ -43,7 +43,7 @@ import torch
 torch.backends.cuda.matmul.allow_tf32 = True
 
 
-model.trunk.set_chunk_size(64)
+model.trunk.set_chunk_size(16)
 
 print('LOADING TIME')
 print(time.time()-sttt)
