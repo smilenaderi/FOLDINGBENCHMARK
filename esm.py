@@ -75,7 +75,7 @@ def run_example(sequnce):
 
         print(all_of_it)
         res = {}
-        with open(f"rafm_plddt_stats-{st}.tsv", "r") as ans:
+        with open(f"rafm_plddt_stats.tsv", "r") as ans:
             l = ans.readline()
             l = ans.readline()
             res['residues_in_pLDDT'] = l.split()[1]
@@ -83,6 +83,7 @@ def run_example(sequnce):
             res['pLDDT_median'] = l.split()[3]
             res['pLDDT80_count'] = l.split()[4]
             res['passing'] = l.split()[-2]
+        print(res)
         # print(output)
         # print(pdb)
 
