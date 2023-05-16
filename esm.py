@@ -60,7 +60,7 @@ def run_example(sequnce):
         output = model(tokenized_input)
         pdb = convert_outputs_to_pdb(output)
         print(time.time()-st)
-        filename = f'pdb-{st}'
+        filename = f'pdb-{st}.pdb'
         with open(filename,'w') as writer:
             for x in pdb:
                 writer.write(x)
